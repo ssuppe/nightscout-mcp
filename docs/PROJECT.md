@@ -4,14 +4,14 @@ Revision: 0.02
 
 This project aims to create a read-only MCP (Model Context Protocol) server for Nightscout, a popular open-source diabetes management platform. The server will enable AI agents to access a user's Nightscout data, allowing for advanced analysis, insights, and visualizations.
 
-The server will be built using the **`mcp-framework`** for TypeScript, which will ensure compliance with the MCP specification and provide a robust foundation for our tools.
+The server will be built using the **`@modelprotocol/ts-sdk`** for TypeScript, which will ensure compliance with the MCP specification and provide a robust foundation for our tools.
 
 ## **2. MVP Project Plan**
 
 To deliver value as quickly as possible, we are taking an MVP (Minimum Viable Product) approach. Our initial goal is to get a single, core tool, `get_entries`, working end-to-end.
 
-### **Phase 1: Project Setup with `mcp-framework`**
-*   **Initialize Project:** Use the `mcp-framework` CLI to create a new project.
+### **Phase 1: Project Setup with `@modelprotocol/ts-sdk`**
+*   **Initialize Project:** Use `npm init` and install the SDK.
 *   **Install Dependencies:** The framework will handle the installation of most dependencies. We will need to add `axios` for our API client.
 *   **Create Configuration Files:** Create `.env.example` for our Nightscout URL and token.
 
