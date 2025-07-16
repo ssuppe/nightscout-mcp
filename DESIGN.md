@@ -2,19 +2,27 @@
 
 ## **1. High-Level Architecture**
 
-The following diagram illustrates the high-level architecture of the Nightscout MCP server and its interactions with other components.
+The server will be built using the **`mcp-framework`**, which provides a robust foundation for creating MCP-compliant servers. The framework will handle the underlying JSON-RPC 2.0 communication, allowing us to focus on implementing the tools.
+
+The following diagram illustrates the high-level architecture:
 
 ```mermaid
 graph TD
     A[User] --> B{AI Agent};
-    B --> C[Nightscout MCP Server];
-    C --> D[Nightscout API];
-    D --> E[Nightscout Database];
+    B --> C{mcp-framework Server};
+    C --> D[Nightscout API Client];
+    D --> E[Nightscout API];
+    E --> F[Nightscout Database];
+
+    subgraph "Our Code"
+        C
+        D
+    end
 ```
 
 ## **2. Data Models**
 
-The following TypeScript interfaces define the data structures used by the MCP server.
+The following TypeScript interfaces define the data structures used by the MCP server. These will be used in our API client and tool implementations.
 
 ### **2.1. Treatment**
 
@@ -76,6 +84,7 @@ interface SGV extends Entry {
   unfiltered: number;
   units: 'mg/dl' | 'mmol/L';
 }
+```
 
 ### **2.3. Profile**
 
@@ -115,4 +124,3 @@ interface Profile {
   srvCreated: number;
   subject: string;
 }
-```

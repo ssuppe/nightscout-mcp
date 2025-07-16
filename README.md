@@ -1,6 +1,6 @@
 # Nightscout MCP Server
 
-This project is a read-only MCP (Model Context Protocol) server for Nightscout.
+This project is a read-only MCP (Model Context Protocol) server for Nightscout, built with the **`mcp-framework`**.
 
 ## Getting Started
 
@@ -11,12 +11,24 @@ This project is a read-only MCP (Model Context Protocol) server for Nightscout.
 
 ### Installation
 
-1.  Clone the repository.
-2.  Install the dependencies:
+1.  **Install the `mcp-framework` CLI:**
+    ```bash
+    npm install -g mcp-framework
+    ```
+2.  **Create a new project:**
+    ```bash
+    mcp create nightscout-mcp-server
+    cd nightscout-mcp-server
+    ```
+3.  **Install dependencies:**
     ```bash
     npm install
     ```
-3.  Create a `.env` file in the root of the project and add the following environment variables:
+4.  **Install `axios`:**
+    ```bash
+    npm install axios
+    ```
+5.  **Create a `.env` file** in the root of the project and add the following environment variables:
     ```
     NIGHTSCOUT_URL=https://your-nightscout-site.com
     NIGHTSCOUT_TOKEN=your-nightscout-api-token
@@ -24,27 +36,20 @@ This project is a read-only MCP (Model Context Protocol) server for Nightscout.
 
 ### Running the Server
 
-1.  Build the project:
+1.  **Build the project:**
     ```bash
     npm run build
     ```
-2.  Start the server:
+2.  **Start the server:**
     ```bash
     npm start
     ```
 
-The server will be running on `http://localhost:3000`.
+The server will be running on `http://localhost:8080` by default.
 
-### Testing the `get_entries` Tool
+### Adding Tools
 
-You can test the `get_entries` tool using `curl`:
+You can add new tools to the server using the `mcp-framework` CLI:
 
 ```bash
-curl -X POST http://localhost:3000/mcp/get_entries \
--H "Content-Type: application/json" \
--d '{
-  "count": 5,
-  "find": {
-    "type": "sgv"
-  }
-}'
+mcp add tool <tool-name>

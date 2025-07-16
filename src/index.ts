@@ -5,6 +5,7 @@
 
 import express, { Request, Response } from 'express';
 import * as dotenv from 'dotenv';
+import { JSONRPCServer } from 'json-rpc-2.0';
 import { NightscoutClient } from './services/nightscoutClient';
 
 // Load environment variables from .env file
@@ -25,26 +26,26 @@ if (!nightscoutUrl || !nightscoutToken) {
 
 const nightscoutClient = new NightscoutClient(nightscoutUrl, nightscoutToken);
 
-/**
- * @route POST /mcp/get_entries
- * @description This tool retrieves entries from the user's Nightscout instance.
- * @param {number} [count=100] - The number of entries to return.
- * @param {object} [find] - A query object to filter the results.
- * @returns {Promise<Entry[]>} An array of entry objects.
- */
-app.post('/mcp/get_entries', async (req: Request, res: Response) => {
-  try {
-    const { count, find } = req.body;
-    const entries = await nightscoutClient.getEntries(count, find);
-    res.json(entries);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Failed to fetch entries from Nightscout.' });
-  }
+const server = new JSONRPCServer();
+
+// Add the get_entries method to the JSON-RPC server
+server.addMethod("get_entries", async ({ count, find }) => {
+  return await nightscoutClient.getEntries(count, find);
 });
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Nightscout MCP Server is running!');
+app.post("/", (req: Request, res: Response) => {
+  const jsonRPCRequest = req.body;
+  // server.receive returns a promise of a JSON-RPC response.
+  // It can also receive an array of requests, in which case it may return an array of responses.
+  // Alternatively, you can use server.receiveJSON, which takes a string as input.
+  server.receive(jsonRPCRequest).then((jsonRPCResponse) => {
+    if (jsonRPCResponse) {
+      res.json(jsonRPCResponse);
+    } else {
+      // If response is absent, it was a notification.
+      res.sendStatus(204);
+    }
+  });
 });
 
 app.listen(port, () => {

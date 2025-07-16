@@ -4,22 +4,21 @@
 
 This project aims to create a read-only MCP (Model Context Protocol) server for Nightscout, a popular open-source diabetes management platform. The server will enable AI agents to access a user's Nightscout data, allowing for advanced analysis, insights, and visualizations.
 
-The server will be written in TypeScript and will initially support v1 of the Nightscout API. The architecture will be designed to be extensible, allowing for the future implementation of v2 and v3 of the API.
+The server will be built using the **`mcp-framework`** for TypeScript, which will ensure compliance with the MCP specification and provide a robust foundation for our tools.
 
 ## **2. MVP Project Plan**
 
 To deliver value as quickly as possible, we are taking an MVP (Minimum Viable Product) approach. Our initial goal is to get a single, core tool, `get_entries`, working end-to-end.
 
-### **Phase 1: Minimal Project Setup**
-*   **Install Dependencies:** Install essential libraries (`typescript`, `express`, `axios`).
-*   **Create `tsconfig.json`:** Configure the TypeScript compiler.
-*   **Create Basic Server Structure:** Set up the initial `src/index.ts` file.
-*   **Create Configuration Files:** Create `mcp.json` and `.env.example`.
+### **Phase 1: Project Setup with `mcp-framework`**
+*   **Initialize Project:** Use the `mcp-framework` CLI to create a new project.
+*   **Install Dependencies:** The framework will handle the installation of most dependencies. We will need to add `axios` for our API client.
+*   **Create Configuration Files:** Create `.env.example` for our Nightscout URL and token.
 
-### **Phase 2: Implement `get_entries` End-to-End**
-*   **Implement Minimal API Client:** Write the client code necessary to fetch data for the `get_entries` tool.
-*   **Implement `get_entries` MCP Tool:** Build the `get_entries` tool itself.
-*   **Create Simple Manual Test:** Create a simple way to manually test the tool (e.g., a `curl` command).
+### **Phase 2: Implement `get_entries` Tool**
+*   **Define Tool Schema:** Create a Zod schema for the `get_entries` tool's inputs.
+*   **Implement Tool Logic:** Create a `get_entries` tool class that extends `MCPTool` and implements the `execute` method.
+*   **Implement API Client:** Create a minimal API client to fetch data from the Nightscout API.
 
 ### **Phase 3: Future Work (Post-MVP)**
 *   Implement the remaining tools (`get_treatments`, `get_profile`, `get_sgv`, `get_average_glucose`).
