@@ -1,5 +1,5 @@
 # **Project: Nightscout MCP Server**
-
+Revision: 0.02
 ## **1. Project Overview**
 
 This project aims to create a read-only MCP (Model Context Protocol) server for Nightscout, a popular open-source diabetes management platform. The server will enable AI agents to access a user's Nightscout data, allowing for advanced analysis, insights, and visualizations.
