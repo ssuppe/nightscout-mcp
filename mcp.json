@@ -1,0 +1,6 @@
+{
+  "name": "nightscout",
+  "description": "An MCP server for interacting with the Nightscout API.",
+  "api_version": "v1",
+  "units": "mg/dl"
+}
