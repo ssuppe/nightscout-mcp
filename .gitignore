@@ -3,6 +3,7 @@
 
 # Compiled TypeScript files
 /dist
+/src/**/*.js
 
 # Environment variables
 .env
