@@ -37,7 +37,15 @@ To deliver value as quickly as possible, we are taking an MVP (Minimum Viable Pr
 *   Enhance documentation.
 *   Prepare for deployment.
 
-## **3. Project Documents**
+## **3. Learnings from MVP Implementation**
+
+During the initial MVP implementation, we encountered a couple of key issues that are important to document for future development:
+
+*   **The `zod` Dependency:** The `CONVENTIONS.md` file initially suggested using plain JavaScript objects for input validation to keep the MVP simple. However, the `@modelcontextprotocol/sdk` is strongly designed to work with `zod` for defining input schemas. Attempting to bypass `zod` resulted in TypeScript errors and a more complex implementation. We ultimately decided to adopt `zod` as it provides robust, type-safe validation and aligns with the SDK's intended usage. This decision, while seemingly a deviation from the initial "simplicity" principle, will lead to a more maintainable and less error-prone codebase.
+
+*   **Using `zod` Correctly:** When implementing `zod`, we made a mistake in how we passed the schema to the `registerTool` function. The function expects a raw Zod shape (a plain JavaScript object with Zod types as values), not a `z.object()` instance. This was a subtle but important distinction that caused TypeScript errors. The corrected approach is to define the shape as a plain object and then pass that to the `registerTool` function.
+
+## **4. Project Documents**
 
 *   [Product Requirements Document (`PRD.md`)](./PRD.md)
 *   [Design Document (`DESIGN.md`)](./DESIGN.md)
