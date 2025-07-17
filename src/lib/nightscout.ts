@@ -52,6 +52,14 @@ export class NightscoutClient {
 
     // Validate the response data against the schema.
     const validatedEntries = entriesSchema.parse(response.data);
+
+    // Ensure all entries have a dateString.
+    for (const entry of validatedEntries) {
+      if (!entry.dateString) {
+        entry.dateString = new Date(entry.date).toISOString();
+      }
+    }
+
     return validatedEntries;
   }
 }

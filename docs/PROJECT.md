@@ -47,6 +47,8 @@ During the initial MVP implementation, we encountered a couple of key issues tha
 
 *   **Tool Definition and Schema:** A key learning was the importance of providing a detailed description of the tool's output in the `description` field of the `registerTool` method. This is crucial for the LLM to understand the shape of the data it will receive. We also created a dedicated `src/lib/schemas.ts` file to define the Zod schema for the Nightscout `Entry` object. This schema is used to validate the data from the Nightscout API and to inform the description of the `get_entries` tool. This approach ensures that our data is valid and that the LLM has a clear understanding of the data it is working with.
 
+*   **Handling Data Inconsistencies:** During testing, we discovered that the Nightscout API does not always return a `dateString` field, which caused our Zod validation to fail. To address this, we made the `dateString` field optional in our `entrySchema` and added logic to our `NightscoutClient` to manually create the `dateString` from the `date` timestamp if it is missing. This makes our server more robust and resilient to inconsistencies in the API data.
+
 ## **4. Project Documents**
 
 *   [Product Requirements Document (`PRD.md`)](./PRD.md)

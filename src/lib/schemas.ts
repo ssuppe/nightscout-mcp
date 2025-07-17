@@ -11,7 +11,7 @@ import { z } from "zod";
  */
 export const entrySchema = z.object({
   type: z.string(),
-  dateString: z.string(),
+  dateString: z.string().optional(),
   date: z.number(),
   sgv: z.number().optional(),
   direction: z.string().optional(),
