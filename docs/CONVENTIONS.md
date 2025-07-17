@@ -38,6 +38,8 @@ Enforcing a consistent naming convention reduces cognitive overhead when reading
     *   **Avoid `any`:** Do not use the `any` type. If the type is unknown, use `unknown` and perform the necessary type checking.
     *   **Type Everything:** Provide explicit types for all variable declarations, function parameters, and function return values. This improves code quality and makes it more self-documenting.
     *   **Strict Mode:** Enable strict type-checking options in your `tsconfig.json`.
+    *   **Input Validation:** For input validation, we will use plain JavaScript objects with clear and descriptive property names. This approach is simple and sufficient for our MVP.
+        *   **Note on `@modelcontextprotocol/sdk`:** While we aim for simplicity, the `@modelcontextprotocol/sdk` is designed to work with the `zod` library for input schema validation. For any tools created for the MCP server, we will use `zod` to define the input schemas. This ensures compatibility with the SDK and provides robust, type-safe validation.
 *   **Functions:**
     *   Keep functions short and focused on a single responsibility.
     *   Use arrow functions for inline functions and to maintain lexical `this` context.
