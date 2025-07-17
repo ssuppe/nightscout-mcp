@@ -45,6 +45,8 @@ During the initial MVP implementation, we encountered a couple of key issues tha
 
 *   **Using `zod` Correctly:** When implementing `zod`, we made a mistake in how we passed the schema to the `registerTool` function. The function expects a raw Zod shape (a plain JavaScript object with Zod types as values), not a `z.object()` instance. This was a subtle but important distinction that caused TypeScript errors. The corrected approach is to define the shape as a plain object and then pass that to the `registerTool` function.
 
+*   **Tool Definition and Schema:** A key learning was the importance of providing a detailed description of the tool's output in the `description` field of the `registerTool` method. This is crucial for the LLM to understand the shape of the data it will receive. We also created a dedicated `src/lib/schemas.ts` file to define the Zod schema for the Nightscout `Entry` object. This schema is used to validate the data from the Nightscout API and to inform the description of the `get_entries` tool. This approach ensures that our data is valid and that the LLM has a clear understanding of the data it is working with.
+
 ## **4. Project Documents**
 
 *   [Product Requirements Document (`PRD.md`)](./PRD.md)
