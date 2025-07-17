@@ -115,7 +115,7 @@ async function main(): Promise<void> {
   app.get("/mcp", handleSessionRequest);
   app.delete("/mcp", handleSessionRequest);
 
-  const port = 8080;
+  const port = 3000;
   app.listen(port, "localhost", () => {
     console.log(`Nightscout MCP server started successfully.`);
     console.log(`Listening on http://localhost:${port}/mcp`);

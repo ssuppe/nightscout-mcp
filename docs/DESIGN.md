@@ -2,7 +2,7 @@
 
 ## **1. High-Level Architecture**
 
-The server will be built using the **`@modelcontextprotocol/sdk`**, which provides a robust foundation for creating MCP-compliant servers. The server will use the `StreamableHTTPServerTransport` to listen for HTTP requests on `localhost:8080`. This transport handles the underlying JSON-RPC 2.0 communication, allowing us to focus on implementing the tools.
+The server will be built using the **`@modelcontextprotocol/sdk`**, which provides a robust foundation for creating MCP-compliant servers. The server will use the `StreamableHTTPServerTransport` to listen for HTTP requests on `localhost:3000`. This transport handles the underlying JSON-RPC 2.0 communication, allowing us to focus on implementing the tools.
 
 The following diagram illustrates the high-level architecture:
 

@@ -40,7 +40,7 @@ You can run the server in two modes:
     npm start
     ```
 
-The server will start and listen on `http://localhost:8080/mcp`. You will see a confirmation message in the console.
+The server will start and listen on `http://localhost:3000/mcp`. You will see a confirmation message in the console.
 
 ### Adding Tools
 
