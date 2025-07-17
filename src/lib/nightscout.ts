@@ -4,6 +4,7 @@
  */
 
 import axios from "axios";
+import { entriesSchema, Entry } from "./schemas.js";
 
 /**
  * The Nightscout client class.
@@ -32,7 +33,7 @@ export class NightscoutClient {
   public async getEntries(
     count: number = 100,
     find?: { [key: string]: any }
-  ): Promise<any[]> {
+  ): Promise<Entry[]> {
     const params: { [key: string]: any } = {
       count,
     };
@@ -49,6 +50,8 @@ export class NightscoutClient {
       },
     });
 
-    return response.data;
+    // Validate the response data against the schema.
+    const validatedEntries = entriesSchema.parse(response.data);
+    return validatedEntries;
   }
 }

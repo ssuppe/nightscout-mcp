@@ -24,9 +24,11 @@ const getEntriesInputSchema = z.object(getEntriesInputShape);
  */
 export type GetEntriesInput = z.infer<typeof getEntriesInputSchema>;
 
+import { Entry } from "../lib/schemas.js";
+
 export async function getEntries(
   input: GetEntriesInput,
   client: NightscoutClient
-): Promise<any[]> {
+): Promise<Entry[]> {
   return client.getEntries(input.count, input.find);
 }

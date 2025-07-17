@@ -35,7 +35,16 @@ async function main(): Promise<void> {
     "get_entries",
     {
       title: "Get Entries",
-      description: "Retrieves entries from the user's Nightscout instance.",
+      description: `Retrieves entries from the user's Nightscout instance. The output is a JSON string representing an array of entry objects, each with the following properties:
+- type: (string) The type of entry (e.g., sgv, mbg, cal).
+- dateString: (string) The date of the entry in ISO 8601 format.
+- date: (number) The date of the entry as an epoch number.
+- sgv: (number, optional) The glucose reading.
+- direction: (string, optional) The direction of glucose trend.
+- noise: (number, optional) The noise level at the time of the reading.
+- filtered: (number, optional) The raw filtered value from the CGM transmitter.
+- unfiltered: (number, optional) The raw unfiltered value from the CGM transmitter.
+- rssi: (number, optional) The signal strength from the CGM transmitter.`,
       inputSchema: getEntriesInputShape,
     },
     async (input: GetEntriesInput) => {
