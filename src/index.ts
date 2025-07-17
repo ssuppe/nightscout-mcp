@@ -5,7 +5,7 @@
  */
 
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
+import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import "dotenv/config";
 import {
   getEntries,
@@ -13,6 +13,9 @@ import {
   GetEntriesInput,
 } from "./tools/getEntries.js";
 import { NightscoutClient } from "./lib/nightscout.js";
+import express from "express";
+import { randomUUID } from "node:crypto";
+import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js";
 
 // The main function is the entry point for the server.
 async function main(): Promise<void> {
@@ -55,11 +58,68 @@ async function main(): Promise<void> {
     }
   );
 
-  // Create a new stdio transport.
-  const transport = new StdioServerTransport();
+  const app = express();
+  app.use(express.json());
 
-  // Connect the server to the transport.
-  await server.connect(transport);
+  const transports: { [sessionId: string]: StreamableHTTPServerTransport } = {};
+
+  app.post("/mcp", async (req, res) => {
+    const sessionId = req.headers["mcp-session-id"] as string | undefined;
+    let transport: StreamableHTTPServerTransport;
+
+    if (sessionId && transports[sessionId]) {
+      transport = transports[sessionId];
+    } else if (!sessionId && isInitializeRequest(req.body)) {
+      transport = new StreamableHTTPServerTransport({
+        sessionIdGenerator: () => randomUUID(),
+        onsessioninitialized: (sessionId) => {
+          transports[sessionId] = transport;
+        },
+      });
+
+      transport.onclose = () => {
+        if (transport.sessionId) {
+          delete transports[transport.sessionId];
+        }
+      };
+      await server.connect(transport);
+    } else {
+      res.status(400).json({
+        jsonrpc: "2.0",
+        error: {
+          code: -32000,
+          message: "Bad Request: No valid session ID provided",
+        },
+        id: null,
+      });
+      return;
+    }
+
+    await transport.handleRequest(req, res, req.body);
+  });
+
+  const handleSessionRequest = async (
+    req: express.Request,
+    res: express.Response
+  ) => {
+    const sessionId = req.headers["mcp-session-id"] as string | undefined;
+    if (!sessionId || !transports[sessionId]) {
+      res.status(400).send("Invalid or missing session ID");
+      return;
+    }
+
+    const transport = transports[sessionId];
+    await transport.handleRequest(req, res);
+  };
+
+  app.get("/mcp", handleSessionRequest);
+  app.delete("/mcp", handleSessionRequest);
+
+  const port = 8080;
+  app.listen(port, "localhost", () => {
+    console.log(`Nightscout MCP server started successfully.`);
+    console.log(`Listening on http://localhost:${port}/mcp`);
+  });
 }
 
 // Start the server.

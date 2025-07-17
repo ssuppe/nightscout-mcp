@@ -2,7 +2,7 @@
 
 ## **1. High-Level Architecture**
 
-The server will be built using the **`@modelcontextprotocol/sdk`**, which provides a robust foundation for creating MCP-compliant servers. The framework will handle the underlying JSON-RPC 2.0 communication, allowing us to focus on implementing the tools.
+The server will be built using the **`@modelcontextprotocol/sdk`**, which provides a robust foundation for creating MCP-compliant servers. The server will use the `StreamableHTTPServerTransport` to listen for HTTP requests on `localhost:8080`. This transport handles the underlying JSON-RPC 2.0 communication, allowing us to focus on implementing the tools.
 
 The following diagram illustrates the high-level architecture:
 
@@ -20,7 +20,17 @@ graph TD
     end
 ```
 
-## **2. Data Models**
+## **2. Node.js ES Module Configuration**
+
+To ensure that the project correctly handles ES Modules, which are used by the `@modelcontextprotocol/sdk` and our TypeScript source code, we must configure the project as an ES Module project. This is done by adding the following line to `package.json`:
+
+```json
+"type": "module"
+```
+
+This setting ensures that Node.js interprets `.js` files as ES Modules, allowing the use of `import` and `export` statements. Without this, you will encounter a `SyntaxError: Cannot use import statement outside a module` when running the compiled code.
+
+## **3. Data Models**
 
 The following TypeScript interfaces define the data structures used by the MCP server. These will be used in our API client and tool implementations.
 

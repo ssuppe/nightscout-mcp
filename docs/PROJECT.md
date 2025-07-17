@@ -12,7 +12,7 @@ During the initial setup, we discovered that the original plan to use `@modelpro
 
 ## **2. MVP Project Plan**
 
-To deliver value as quickly as possible, we are taking an MVP (Minimum Viable Product) approach. Our initial goal is to get a single, core tool, `get_entries`, working end-to-end. From there, we will build a proof of concept MCP server that can be called with both `curl` as well as with an AI client like Claude Desktop or Gemini CLI.
+To deliver value as quickly as possible, we are taking an MVP (Minimum Viable Product) approach. Our initial goal is to get a single, core tool, `get_entries`, working end-to-end. We will build a proof-of-concept MCP server that listens on `localhost:8080` and can be called with `curl` or any other HTTP client.
 
 ### **Phase 1: Project Setup with `@modelcontextprotocol/sdk`**
 *   **Initialize Project:** Use `npm init -y` to create a `package.json` file.

@@ -40,7 +40,7 @@ You can run the server in two modes:
     npm start
     ```
 
-The server will connect to the stdio transport and will be ready to receive MCP messages.
+The server will start and listen on `http://localhost:8080/mcp`. You will see a confirmation message in the console.
 
 ### Adding Tools
 

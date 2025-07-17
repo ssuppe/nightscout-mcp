@@ -2,7 +2,8 @@
   "name": "nightscout-mcp",
   "version": "1.0.0",
   "description": "This project is a read-only MCP (Model Context Protocol) server for Nightscout, built with the **`@modelcontextprotocol/sdk`**.",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "type": "module",
   "directories": {
     "doc": "docs"
   },
@@ -27,9 +28,11 @@
     "@modelcontextprotocol/sdk": "^1.16.0",
     "axios": "^1.10.0",
     "dotenv": "^17.2.0",
+    "express": "^5.1.0",
     "zod": "^3.25.76"
   },
   "devDependencies": {
+    "@types/express": "^5.0.3",
     "@types/node": "^24.0.14",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
