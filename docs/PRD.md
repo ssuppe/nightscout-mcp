@@ -4,6 +4,8 @@
 
 This document outlines the requirements for a Model Context Protocol (MCP) server for Nightscout. The server will provide a read-only interface to a user's Nightscout instance, allowing AI agents to access diabetes-related data for analysis and insights.
 
+**Note:** This document has been updated to reflect the use of the `@modelcontextprotocol/sdk` package.
+
 ## **2. Customer User Journeys (CUJs)**
 
 The primary users of this MCP server are individuals with diabetes who use Nightscout to monitor their glucose levels and want to leverage AI to gain deeper insights into their data.

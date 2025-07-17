@@ -2,14 +2,14 @@
 
 ## **1. High-Level Architecture**
 
-The server will be built using the **`@modelprotocol/ts-sdk`**, which provides a robust foundation for creating MCP-compliant servers. The framework will handle the underlying JSON-RPC 2.0 communication, allowing us to focus on implementing the tools.
+The server will be built using the **`@modelcontextprotocol/sdk`**, which provides a robust foundation for creating MCP-compliant servers. The framework will handle the underlying JSON-RPC 2.0 communication, allowing us to focus on implementing the tools.
 
 The following diagram illustrates the high-level architecture:
 
 ```mermaid
 graph TD
     A[User] --> B{AI Agent};
-    B --> C{@modelprotocol/ts-sdk Server};
+    B --> C{@modelcontextprotocol/sdk Server};
     C --> D[Nightscout API Client];
     D --> E[Nightscout API];
     E --> F[Nightscout Database];

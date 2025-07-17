@@ -38,6 +38,7 @@ Enforcing a consistent naming convention reduces cognitive overhead when reading
     *   **Avoid `any`:** Do not use the `any` type. If the type is unknown, use `unknown` and perform the necessary type checking.
     *   **Type Everything:** Provide explicit types for all variable declarations, function parameters, and function return values. This improves code quality and makes it more self-documenting.
     *   **Strict Mode:** Enable strict type-checking options in your `tsconfig.json`.
+    *   **Input Validation:** For input validation, we will use plain JavaScript objects with clear and descriptive property names. This approach is simple and sufficient for our MVP.
 *   **Functions:**
     *   Keep functions short and focused on a single responsibility.
     *   Use arrow functions for inline functions and to maintain lexical `this` context.

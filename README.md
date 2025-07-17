@@ -1,6 +1,6 @@
 # Nightscout MCP Server
 
-This project is a read-only MCP (Model Context Protocol) server for Nightscout, built with the **`mcp-framework`**.
+This project is a read-only MCP (Model Context Protocol) server for Nightscout, built with the **`@modelcontextprotocol/sdk`**.
 
 ## Getting Started
 
@@ -11,22 +11,14 @@ This project is a read-only MCP (Model Context Protocol) server for Nightscout, 
 
 ### Installation
 
-1.  **Install the `mcp-framework` CLI:**
+1.  **Clone the repository:**
     ```bash
-    npm install -g mcp-framework
+    git clone https://github.com/ssuppe/nightscout-mcp.git
+    cd nightscout-mcp
     ```
-2.  **Create a new project:**
-    ```bash
-    mcp create nightscout-mcp-server
-    cd nightscout-mcp-server
-    ```
-3.  **Install dependencies:**
+2.  **Install dependencies:**
     ```bash
     npm install
-    ```
-4.  **Install `axios`:**
-    ```bash
-    npm install axios
     ```
 5.  **Create a `.env` file** in the root of the project and add the following environment variables:
     ```
