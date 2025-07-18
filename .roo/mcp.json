@@ -20,7 +20,10 @@
         "GITHUB_READ_ONLY": ""
       },
       "alwaysAllow": [
-        "create_issue"
+        "create_issue",
+        "get_issue",
+        "list_issues",
+        "add_issue_comment"
       ]
     },
     "context7": {

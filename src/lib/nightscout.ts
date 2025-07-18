@@ -4,7 +4,7 @@
  */
 
 import axios from "axios";
-import { entriesSchema, Entry } from "./schemas.js";
+import { entriesSchema, Entry, treatmentsSchema, Treatment } from "./schemas.js";
 
 /**
  * The Nightscout client class.
@@ -61,5 +61,36 @@ export class NightscoutClient {
     }
 
     return validatedEntries;
+  }
+  /**
+   * Fetches treatments from the Nightscout API.
+   * @param count The number of treatments to fetch.
+   * @param find The query to filter the treatments.
+   * @returns A promise that resolves to an array of treatments.
+   */
+  public async getTreatments(
+    count: number = 100,
+    find?: { [key: string]: any }
+  ): Promise<Treatment[]> {
+    const params: { [key: string]: any } = {
+      count,
+    };
+    if (find) {
+      Object.keys(find).forEach((key) => {
+        params[`find[${key}]`] = find[key];
+      });
+    }
+
+    const response = await axios.get(`${this.nightscoutUrl}/api/v1/treatments.json`, {
+      params,
+      headers: {
+        "api-secret": this.apiToken,
+      },
+    });
+
+    // Validate the response data against the schema.
+    const validatedTreatments = treatmentsSchema.parse(response.data);
+
+    return validatedTreatments;
   }
 }

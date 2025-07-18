@@ -6,7 +6,8 @@ This project is a read-only MCP (Model Context Protocol) server for Nightscout, 
 
 ## Features
 
-*   **Get Entries:** Retrieve raw data from your Nightscout instance, such as blood glucose readings, treatments, and device statuses.
+*   **Get Entries:** Retrieve raw data from your Nightscout instance, such as blood glucose readings, and device statuses.
+*   **Get Treatments:** Retrieve treatment data from your Nightscout instance, such as insulin doses and carb intake.
 *   **Extensible:** Easily add new tools to expose more of the Nightscout API.
 *   **Secure:** Your Nightscout URL and token are kept secure on the server and are not exposed to the AI model.
 
