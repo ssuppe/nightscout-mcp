@@ -30,5 +30,9 @@ export async function getEntries(
   input: GetEntriesInput,
   client: NightscoutClient
 ): Promise<Entry[]> {
-  return client.getEntries(input.count, input.find);
+  try {
+    return await client.getEntries(input.count, input.find);
+  } catch (error: any) {
+    throw new Error(`Failed to retrieve entries: ${error.message}`);
+  }
 }

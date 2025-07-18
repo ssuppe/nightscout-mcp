@@ -15,7 +15,6 @@
         "ghcr.io/github/github-mcp-server"
       ],
       "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "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",
         "GITHUB_TOOLSETS": "",
         "GITHUB_READ_ONLY": ""
       },
@@ -23,8 +22,10 @@
         "create_issue",
         "get_issue",
         "list_issues",
-        "add_issue_comment"
-      ]
+        "add_issue_comment",
+        "get_file_contents"
+      ],
+      "disabled": false
     },
     "context7": {
       "command": "npx",
