@@ -1,4 +1,7 @@
-Below is a `CONVENTIONS.md` file tailored for your LLM agent writing TypeScript code for an MVP. It emphasizes best practices, extensive commenting for clarity, and simplicity to align with the goals of a minimum viable product.
+> **A Note on this Document**
+>
+> *   **For Human Contributors:** This document outlines the coding conventions for the project. While it was originally written with an AI contributor in mind, the principles and best practices apply to all contributors. Please adhere to these conventions to help maintain a clean and consistent codebase.
+> *   **For AI Contributors:** This is your primary guide for writing and refactoring code. Please follow these conventions closely.
 
 ---
 

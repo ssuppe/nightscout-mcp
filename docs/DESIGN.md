@@ -1,3 +1,8 @@
+> **A Note on this Document**
+>
+> *   **For Human Contributors:** This document is intended to provide context and insight into the project's design. As with any project, it's a living document and may not always be perfectly in sync with the latest code. Please use it as a guide and feel free to ask questions.
+> *   **For AI Contributors:** This document is a key part of the project's context. Please read it, adhere to the design principles outlined here, and help keep it up-to-date as you make changes to the codebase.
+
 # **Design Document: Nightscout MCP Server**
 
 ## **1. High-Level Architecture**
@@ -71,28 +76,15 @@ interface Treatment {
 
 ```typescript
 interface Entry {
-  _id: string;
-  app: string;
-  date: number;
-  device: string;
-  isReadOnly: boolean;
-  isValid: boolean;
   type: string;
-  utcOffset: number;
-  created_at: string;
-  identifier: string;
-  srvModified: number;
-  srvCreated: number;
-  subject: string;
-  mills: number;
-}
-
-interface SGV extends Entry {
-  direction: string;
-  filtered: number;
-  sgv: number;
-  unfiltered: number;
-  units: 'mg/dl' | 'mmol/L';
+  dateString?: string;
+  date: number;
+  sgv?: number;
+  direction?: string;
+  noise?: number;
+  filtered?: number;
+  unfiltered?: number;
+  rssi?: number;
 }
 ```
 

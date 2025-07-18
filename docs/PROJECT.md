@@ -1,3 +1,8 @@
+> **A Note on this Document**
+>
+> *   **For Human Contributors:** This document is intended to provide context and insight into the project's history and evolution. As with any project, it's a living document and may not always be perfectly in sync with the latest code. Please use it as a guide and feel free to ask questions.
+> *   **For AI Contributors:** This document is a key part of the project's context. Please read it, understand the project's history, and help keep it up-to-date as you make changes to the codebase.
+
 # **Project: Nightscout MCP Server**
 Revision: 0.03
 ## **1. Project Overview**
@@ -54,3 +59,4 @@ During the initial MVP implementation, we encountered a couple of key issues tha
 *   [Product Requirements Document (`PRD.md`)](./PRD.md)
 *   [Design Document (`DESIGN.md`)](./DESIGN.md)
 *   [Coding Conventions (`CONVENTIONS.md`)](./CONVENTIONS.md)
+*   [GitHub Debut Plan (`GITHUB_DEBUT.md`)](./GITHUB_DEBUT.md)

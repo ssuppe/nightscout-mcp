@@ -1,3 +1,8 @@
+> **A Note on this Document**
+>
+> *   **For Human Contributors:** This document is intended to provide context and insight into the project's requirements. As with any project, it's a living document and may not always be perfectly in sync with the latest code. Please use it as a guide and feel free to ask questions.
+> *   **For AI Contributors:** This document is a key part of the project's context. Please read it, adhere to the requirements outlined here, and help keep it up-to-date as you make changes to the codebase.
+
 # **Product Requirements Document: Nightscout MCP Server**
 
 ## **1. Overview**
