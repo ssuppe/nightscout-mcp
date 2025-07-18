@@ -55,6 +55,14 @@ You can run the server in two modes:
 
 The server will start and listen on `http://localhost:3000/mcp`. You will see a confirmation message in the console.
 
+## Query Quickstart
+Try commands like:
+   * What is my most recent blood glucose reading?
+   * What is my average blood sugar since 8am?
+   * What treatments have I taken this morning?
+
+Your mileage may vary. I intend to add more specific tooling for more predictable results.
+
 ## TODO
 
 - [ ] Add additional read-only capabilities directly from the API (starting with Profiles)
