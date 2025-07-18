@@ -1,7 +1,5 @@
 # Nightscout MCP Server
 
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
-
 This project is a read-only MCP (Model Context Protocol) server for Nightscout, built with the **`@modelcontextprotocol/sdk`**. It allows AI agents and other tools to interact with your Nightscout data in a structured and secure way, enabling advanced analysis, insights, and visualizations.
 
 ## Features
