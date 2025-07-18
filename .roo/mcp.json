@@ -18,7 +18,10 @@
         "GITHUB_PERSONAL_ACCESS_TOKEN": "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",
         "GITHUB_TOOLSETS": "",
         "GITHUB_READ_ONLY": ""
-      }
+      },
+      "alwaysAllow": [
+        "create_issue"
+      ]
     },
     "context7": {
       "command": "npx",
