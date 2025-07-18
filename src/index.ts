@@ -12,6 +12,10 @@ import {
   getEntriesInputShape,
   GetEntriesInput,
 } from "./tools/getEntries.js";
+import {
+  getTreatments,
+  getTreatmentsInputShape,
+} from "./tools/getTreatments.js";
 import { NightscoutClient } from "./lib/nightscout.js";
 import express from "express";
 import { randomUUID } from "node:crypto";
@@ -54,6 +58,22 @@ async function main(): Promise<void> {
       const entries = await getEntries(input, client);
       return {
         content: [{ type: "text", text: JSON.stringify(entries, null, 2) }],
+      };
+    }
+  );
+
+  // Register the get_treatments tool.
+  server.registerTool(
+    "get_treatments",
+    {
+      title: "Get Treatments",
+      description: `Retrieves treatments from the user's Nightscout instance. The output is a JSON string representing an array of treatment objects.`,
+      inputSchema: getTreatmentsInputShape,
+    },
+    async (input: any) => {
+      const treatments = await getTreatments(input, { nightscout: client });
+      return {
+        content: [{ type: "text", text: JSON.stringify(treatments, null, 2) }],
       };
     }
   );
