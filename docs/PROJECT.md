@@ -65,9 +65,22 @@ Preparing the repository for its first public release revealed several important
 
 *   **Handling Nullable Fields:** The implementation of the `get_treatments` tool revealed that some fields, such as `carbs` and `insulin`, can be `null` in the Nightscout API response. To handle this, we updated our `zod` schema to allow for nullable values and provide a default value of `0`. This ensures that our server can gracefully handle these cases and avoid validation errors.
 
-## **4. Project Documents**
+## **5. Learnings from Testing Setup**
+
+During the setup of our testing environment and the implementation of the `get_treatments` unit tests, we encountered several key challenges that are important to document for future reference:
+
+*   **Jest Configuration for ES Modules:** Initially, we faced a `ReferenceError: module is not defined in ES module scope` when running Jest. This was due to `jest.config.js` using CommonJS syntax (`module.exports`) while the project's `package.json` was configured for ES Modules (`"type": "module"`). The resolution involved converting `jest.config.js` to use ES Module syntax (`export default`).
+
+*   **`NightscoutClient` Mocking in Jest:** Properly mocking the `NightscoutClient` class proved challenging. Initial attempts resulted in TypeScript errors related to missing properties (`nightscoutUrl`, `apiToken`) on the mocked instance and incorrect application of `mockImplementation`. The solution involved explicitly defining a mock class within `jest.mock()` that fully satisfies the `NightscoutClient` interface, including its constructor and methods. This ensures that when `new NightscoutClient()` is called in the test environment, a correctly structured mock instance is returned.
+
+*   **Module Import Consistency:** We encountered `Cannot find module` errors due to inconsistent module import paths (e.g., using `../lib/nightscout.js` instead of `../lib/nightscout`). Ensuring that import paths in test files (and other modules) align with Jest's module resolution and ES Module conventions (often by omitting `.js` extensions for local modules) was crucial for resolving these issues.
+
+*   **Granular Error Handling in Tools:** The `get_treatments` unit test for error handling initially failed because the `getTreatments` function was directly re-throwing the `NightscoutClient`'s error without modification. To meet the test's expectation of a prefixed error message (`Failed to retrieve treatments: `), we implemented a `try-catch` block within the `getTreatments` function to catch the underlying error and re-throw it with the desired message. This highlights the importance of consistent error messaging for better debugging and testability.
+
+## **6. Project Documents**
 
 *   [Product Requirements Document (`PRD.md`)](./PRD.md)
 *   [Design Document (`DESIGN.md`)](./DESIGN.md)
 *   [Coding Conventions (`CONVENTIONS.md`)](./CONVENTIONS.md)
 *   [GitHub Debut Plan (`GITHUB_DEBUT.md`)](./GITHUB_DEBUT.md)
+*   [How to Write a Test (`HOW_TO_WRITE_A_TEST.md`)](./HOW_TO_WRITE_A_TEST.md)

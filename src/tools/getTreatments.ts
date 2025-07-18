@@ -14,5 +14,9 @@ export async function getTreatments(
   input: GetTreatmentsInput,
   context: { nightscout: NightscoutClient }
 ) {
-  return await context.nightscout.getTreatments(input.count, input.find);
+  try {
+    return await context.nightscout.getTreatments(input.count, input.find);
+  } catch (error: any) {
+    throw new Error(`Failed to retrieve treatments: ${error.message}`);
+  }
 }
