@@ -22,3 +22,4 @@ yarn-error.log*
 /.roo*
 .roo
 .roo/*
+.roo/*json
