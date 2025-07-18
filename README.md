@@ -11,6 +11,10 @@ This project is a read-only MCP (Model Context Protocol) server for Nightscout, 
 *   **Extensible:** Easily add new tools to expose more of the Nightscout API.
 *   **Secure:** Your Nightscout URL and token are kept secure on the server and are not exposed to the AI model.
 
+### API Support
+
+*   **Nightscout API v1:** Currently, this server only supports v1 of the Nightscout API.
+
 ## Getting Started
 
 ### Prerequisites
@@ -50,6 +54,11 @@ You can run the server in two modes:
     ```
 
 The server will start and listen on `http://localhost:3000/mcp`. You will see a confirmation message in the console.
+
+## TODO
+
+- [ ] Add additional read-only capabilities directly from the API (starting with Profiles)
+- [ ] Create helper tools (such as averages, percentiles, finding high and low times of day, etc)
 
 ## Contributing
 
