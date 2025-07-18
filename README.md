@@ -1,6 +1,14 @@
 # Nightscout MCP Server
 
-This project is a read-only MCP (Model Context Protocol) server for Nightscout, built with the **`@modelcontextprotocol/sdk`**.
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+
+This project is a read-only MCP (Model Context Protocol) server for Nightscout, built with the **`@modelcontextprotocol/sdk`**. It allows AI agents and other tools to interact with your Nightscout data in a structured and secure way, enabling advanced analysis, insights, and visualizations.
+
+## Features
+
+*   **Get Entries:** Retrieve raw data from your Nightscout instance, such as blood glucose readings, treatments, and device statuses.
+*   **Extensible:** Easily add new tools to expose more of the Nightscout API.
+*   **Secure:** Your Nightscout URL and token are kept secure on the server and are not exposed to the AI model.
 
 ## Getting Started
 
@@ -20,7 +28,7 @@ This project is a read-only MCP (Model Context Protocol) server for Nightscout, 
     ```bash
     npm install
     ```
-5.  **Create a `.env` file** in the root of the project and add the following environment variables:
+3.  **Create a `.env` file** in the root of the project and add the following environment variables:
     ```
     NIGHTSCOUT_URL=https://your-nightscout-site.com
     NIGHTSCOUT_TOKEN=your-nightscout-api-token
@@ -42,12 +50,10 @@ You can run the server in two modes:
 
 The server will start and listen on `http://localhost:3000/mcp`. You will see a confirmation message in the console.
 
-### Adding Tools
+## Contributing
 
-To add a new tool, you will need to:
+Contributions are welcome! Please see the [Contributing Guidelines](CONTRIBUTING.md) for more details on how to get involved.
 
-1.  Create a new file in the `src/tools` directory.
-2.  Define the tool's logic in that file.
-3.  If the tool takes input, define a `zod` schema for the input.
-4.  Register the tool in `src/index.ts` using the `server.registerTool` method.
-5.  Provide a detailed description of the tool's functionality and its output schema in the `description` field of the `registerTool` method. This is crucial for the LLM to understand how to use the tool.
+## License
+
+This project is licensed under the AGPL-3.0 License. See the [LICENSE](LICENSE) file for details.

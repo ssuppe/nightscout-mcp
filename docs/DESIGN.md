@@ -71,28 +71,15 @@ interface Treatment {
 
 ```typescript
 interface Entry {
-  _id: string;
-  app: string;
-  date: number;
-  device: string;
-  isReadOnly: boolean;
-  isValid: boolean;
   type: string;
-  utcOffset: number;
-  created_at: string;
-  identifier: string;
-  srvModified: number;
-  srvCreated: number;
-  subject: string;
-  mills: number;
-}
-
-interface SGV extends Entry {
-  direction: string;
-  filtered: number;
-  sgv: number;
-  unfiltered: number;
-  units: 'mg/dl' | 'mmol/L';
+  dateString?: string;
+  date: number;
+  sgv?: number;
+  direction?: string;
+  noise?: number;
+  filtered?: number;
+  unfiltered?: number;
+  rssi?: number;
 }
 ```
 

@@ -1,5 +1,3 @@
-Below is a `CONVENTIONS.md` file tailored for your LLM agent writing TypeScript code for an MVP. It emphasizes best practices, extensive commenting for clarity, and simplicity to align with the goals of a minimum viable product.
-
 ---
 
 # TypeScript Coding Conventions for MVP Development

@@ -54,3 +54,4 @@ During the initial MVP implementation, we encountered a couple of key issues tha
 *   [Product Requirements Document (`PRD.md`)](./PRD.md)
 *   [Design Document (`DESIGN.md`)](./DESIGN.md)
 *   [Coding Conventions (`CONVENTIONS.md`)](./CONVENTIONS.md)
+*   [GitHub Debut Plan (`GITHUB_DEBUT.md`)](./GITHUB_DEBUT.md)
